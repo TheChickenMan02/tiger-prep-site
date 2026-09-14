@@ -18,6 +18,9 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     event.preventDefault();
     showPage(route === 'pricing' ? 'services' : route);
     history.replaceState(null, '', `#${route}`);
+    if (route === 'pricing') {
+      document.querySelector('#packages').scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
@@ -199,8 +202,14 @@ planForm.addEventListener('submit', (event) => {
 
 const initialRoute = window.location.hash.slice(1) || 'home';
 showPage(initialRoute === 'pricing' ? 'services' : initialRoute);
+if (initialRoute === 'pricing') {
+  document.querySelector('#packages').scrollIntoView();
+}
 
 window.addEventListener('hashchange', () => {
   const route = window.location.hash.slice(1) || 'home';
   showPage(route === 'pricing' ? 'services' : route);
+  if (route === 'pricing') {
+    document.querySelector('#packages').scrollIntoView({ behavior: 'smooth' });
+  }
 });
