@@ -40,7 +40,7 @@ function getPackageSelection() {
   const duration = Number(document.querySelector('#package-duration').value);
   const frequency = Number(document.querySelector('#package-frequency').value);
   const weeks = Number(document.querySelector('#package-length').value);
-  const discount = weeks === 4 ? 0.9 : 0.85;
+  const discount = 1 - Math.min(weeks, 18) / 100;
   const rate = HOURLY_RATES[program];
   const regularTotal = frequency * weeks * duration * rate;
   const packageTotal = regularTotal * discount;
@@ -68,7 +68,7 @@ packageInputs.forEach((input) => input.addEventListener('change', updatePackageP
 updatePackagePrice();
 
 // Plan confirmation modal + Calendly handoff + Web3Forms notification
-const CALENDLY_BASE_URL = 'https://calendly.com/dbjimson/tiger-prep-discovery-call'; // TODO: replace with your real Calendly event URL before launch
+const CALENDLY_BASE_URL = 'https://calendly.com/dbjimson/tiger-prep-discovery-call';
 const WEB3FORMS_ACCESS_KEY = 'f19637d4-1444-4b46-b9da-b23cd3a989b9';
 
 const planModal = document.querySelector('#plan-modal');
