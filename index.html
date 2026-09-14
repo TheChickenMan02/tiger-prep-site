@@ -58,6 +58,42 @@
       <div class="calculator" id="packages"><div class="calculator-intro"><p class="eyebrow">Custom packages</p><h2>Make a plan<br /><em>that sticks.</em></h2><p>Choose a rhythm that works for your student and see your package total instantly.</p></div><div class="calculator-card"><div class="calculator-fields"><label>Program<select id="package-program"><option value="k12">K–12 tutoring · $35/hr</option><option value="sat">SAT prep · $50/hr</option></select></label><label>Session length<select id="package-duration"><option value="0.5">30 minutes</option><option value="1">60 minutes</option></select></label><label>Sessions per week<select id="package-frequency"><option value="1">1 session</option><option value="2">2 sessions</option><option value="3">3 sessions</option></select></label><label>Package length<select id="package-length"><option value="4">4 weeks</option><option value="9">9 weeks</option></select></label></div><div class="calculator-result"><div><span>Your package total</span><strong id="package-total">$184.32</strong></div><div class="savings-line"><span>Regular session total</span><del id="regular-total">$204.80</del><b id="package-savings">Save $20.48</b></div></div><p class="calculator-note">Packages include a built-in discount: 10% off for 4 weeks, 15% off for 9 weeks.</p><button type="button" class="button button-dark full-button" id="confirm-plan">Confirm my plan <span>↗</span></button></div></div>
     </section>
 
+    <div class="plan-modal" id="plan-modal" hidden>
+      <div class="plan-modal-overlay" id="plan-modal-overlay"></div>
+      <div class="plan-modal-card" role="dialog" aria-modal="true" aria-labelledby="plan-modal-title">
+        <button type="button" class="plan-modal-close" id="plan-modal-close" aria-label="Close">×</button>
+        <p class="eyebrow">Your plan</p>
+        <h2 id="plan-modal-title">Almost there.</h2>
+        <p class="plan-modal-copy">Tell us a bit about your student and we’ll take you to booking with your plan already filled in.</p>
+        <form id="plan-form">
+          <div class="plan-form-row">
+            <label>Parent name<input type="text" id="plan-parent-name" required autocomplete="name" /></label>
+            <label>Student name<input type="text" id="plan-student-name" required autocomplete="off" /></label>
+          </div>
+          <div class="plan-form-row">
+            <label>Email<input type="email" id="plan-email" required autocomplete="email" /></label>
+            <label>Phone <span class="optional-tag">(optional)</span><input type="tel" id="plan-phone" autocomplete="tel" /></label>
+          </div>
+          <div class="plan-form-row">
+            <label>Grade level<input type="text" id="plan-grade" placeholder="e.g. 9th grade" /></label>
+            <label>Subject / focus area<input type="text" id="plan-subject" placeholder="e.g. Algebra" /></label>
+          </div>
+          <label>What result are you hoping for?<textarea id="plan-goal" rows="3" placeholder="e.g. Raise SAT math score to 650 by December"></textarea></label>
+          <label>How did you hear about us? <span class="optional-tag">(optional)</span>
+            <select id="plan-referral">
+              <option value="">Select one</option>
+              <option value="Google search">Google search</option>
+              <option value="Instagram / social media">Instagram / social media</option>
+              <option value="Friend or family referral">Friend or family referral</option>
+              <option value="School or teacher">School or teacher</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <button type="submit" class="button button-gold full-button">Continue to booking <span>↗</span></button>
+        </form>
+      </div>
+    </div>
+
     <section class="page page-founders" data-route="founders">
       <div class="page-intro split-intro"><div><p class="eyebrow">The people behind the plan / 03</p><h1>Meet your<br /><em>coaches.</em></h1></div><p>We’re students, teachers, and lifelong learners ourselves. That means we know the pressure, the plateaus, and the satisfaction of finally getting it.</p></div>
       <div class="founder-grid">
@@ -68,7 +104,7 @@
     </section>
 
     <section class="page page-booking" data-route="booking">
-      <div class="booking-layout"><div class="booking-side"><p class="eyebrow">Start here / 04</p><h1>Let’s find<br /><em>your next win.</em></h1><p>Choose a time that works for you. We’ll ask a few quick questions so your first session starts with context, not catch-up.</p><div class="booking-perks"><span>01 <b>Pick a time</b></span><span>02 <b>Tell us what you need</b></span><span>03 <b>Make a plan</b></span></div><p class="small-note">Calendly handles scheduling securely. You’ll receive a confirmation email with everything you need.</p></div><div class="embed-card"><div class="embed-header"><span>Book a session</span><span class="live-dot">Available now</span></div><div class="calendly-placeholder"><span class="calendar-icon">▦</span><h2>Talk to Our Team</h2><p>Connect with the right tutor and find a time that works for you.</p><a class="button button-dark" href="https://calendly.com/" target="_blank" rel="noreferrer">Talk to Our Team <span>↗</span></a><small>Replace this link with your personal Calendly URL before launch.</small></div></div></div>
+      <div class="booking-layout"><div class="booking-side"><p class="eyebrow">Start here / 04</p><h1>Let’s find<br /><em>your next win.</em></h1><p>Choose a time that works for you. We’ll ask a few quick questions so your first session starts with context, not catch-up.</p><div class="booking-perks"><span>01 <b>Pick a time</b></span><span>02 <b>Tell us what you need</b></span><span>03 <b>Make a plan</b></span></div><p class="small-note">Calendly handles scheduling securely. You’ll receive a confirmation email with everything you need.</p></div><div class="embed-card"><div class="embed-header"><span>Book a session</span><span class="live-dot">Available now</span></div><dl class="plan-recap" id="plan-recap" hidden></dl><div class="calendly-placeholder"><span class="calendar-icon">▦</span><h2 id="calendly-heading">Talk to Our Team</h2><p id="calendly-copy">Connect with the right tutor and find a time that works for you.</p><a class="button button-dark" id="calendly-link" href="https://calendly.com/" target="_blank" rel="noreferrer">Talk to Our Team <span>↗</span></a><small>Replace this link with your personal Calendly URL before launch.</small></div></div></div>
     </section>
 
     <section class="page page-payment" data-route="payment">
